@@ -33,12 +33,12 @@ def importControls(controls):
     
     ###TODO - provide csv import option for control list parameters
     
-    controls.append(epidemic_control(0,"Distancing","Enter [Y] to implement 2 metre social distancing rules, [N] to ignore this measure : ",DISTANCING,[20,40,5,20,30,40]))
-    controls.append(epidemic_control(1,"Facemask","Enter [Y] to implement facemasks, [N] to ignore this measure : ",FACEMASKS,[15,25,75,34,56,90]))
-    controls.append(epidemic_control(2,"Pubs","Enter [Y] to implement pubs early closing, [N] to ignore this measure : " ,PUBS,[20,40,5,20,30,40]))
-    controls.append(epidemic_control(3,"Non-Essential","Enter [Y] to close non-essential shops, [N] to ignore this measure : ",NON_ESSENTIAL,[20,40,5,20,30,40]))
-    controls.append(epidemic_control(4,"Borders","Enter [Y] to close international borders, [N] to ignore this measure : ",BORDERS,[20,40,5,100,30,40]))
-    controls.append(epidemic_control(5,"Lockdown","Enter [Y] to implement a full National Lockdown, [N] to ignore this measure : ",LOCKDOWN,[20,40,5,20,30,40]))
+    controls.append(epidemic_control(0,"Distancing","Enter [Y] to implement 2 metre social distancing rules, [N] to ignore this measure : ",DISTANCING,[0.3,0.1,1.0,1.0,0.6,0.2]))
+    controls.append(epidemic_control(1,"Facemask","Enter [Y] to implement facemasks, [N] to ignore this measure : ",FACEMASKS,[0.2,0.3,0.8,0.9,0.6,0.2]))
+    controls.append(epidemic_control(2,"Pubs","Enter [Y] to implement pubs early closing, [N] to ignore this measure : " ,PUBS,[1.5,1.5,1.5,1.5,1.5,1.5]))
+    controls.append(epidemic_control(3,"Non-Essential","Enter [Y] to close non-essential shops, [N] to ignore this measure : ",NON_ESSENTIAL,[0.8,0.7,0.9,0.8,0.6,0.7]))
+    controls.append(epidemic_control(4,"Borders","Enter [Y] to close international borders, [N] to ignore this measure : ",BORDERS,[0.2,0.1,0.6,0.8,0.9,0.9]))
+    controls.append(epidemic_control(5,"Lockdown","Enter [Y] to implement a full National Lockdown, [N] to ignore this measure : ",LOCKDOWN,[0.4,0.1,0.3,0.6,0.7,0.9]))
     
 
         
