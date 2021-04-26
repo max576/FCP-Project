@@ -33,12 +33,13 @@ def importControls(controls):
     
     ###TODO - provide csv import option for control list parameters
     
-    controls.append(epidemic_control(0,"Facemask","Enter [Y] to implement Facemasks, [N] to ignore ignore this measure : ",FACEMASKS,[15,25,75,34,56,90]))
-    controls.append(epidemic_control(1,"Distancing","Enter [Y] to implement 2 metre social distancing rules, [N] to ignore ignore this measure : ",DISTANCING,[20,40,5,20,30,40]))
-    controls.append(epidemic_control(2,"Lockdown","Enter [Y] to implement full National Lockdown, [N] to ignore ignore this measure : ",LOCKDOWN,[20,40,5,20,30,40]))
-    controls.append(epidemic_control(3,"Borders","Enter [Y] to close international Borders, [N] to ignore ignore this measure : ",BORDERS,[20,40,5,100,30,40]))
-    controls.append(epidemic_control(4,"Non-Essential","Enter [Y] to implement pub early closing, [N] to ignore ignore this measure : " ,PUBS,[20,40,5,20,30,40]))
-    controls.append(epidemic_control(5,"Pubs","Enter [Y] to close non essential shops, [N] to ignore ignore this measure : ",NON_ESSENTIAL,[20,40,5,20,30,40]))
+    controls.append(epidemic_control(0,"Distancing","Enter [Y] to implement 2 metre social distancing rules, [N] to ignore this measure : ",DISTANCING,[20,40,5,20,30,40]))
+    controls.append(epidemic_control(1,"Facemask","Enter [Y] to implement facemasks, [N] to ignore this measure : ",FACEMASKS,[15,25,75,34,56,90]))
+    controls.append(epidemic_control(2,"Pubs","Enter [Y] to implement pubs early closing, [N] to ignore this measure : " ,PUBS,[20,40,5,20,30,40]))
+    controls.append(epidemic_control(3,"Non-Essential","Enter [Y] to close non-essential shops, [N] to ignore this measure : ",NON_ESSENTIAL,[20,40,5,20,30,40]))
+    controls.append(epidemic_control(4,"Borders","Enter [Y] to close international borders, [N] to ignore this measure : ",BORDERS,[20,40,5,100,30,40]))
+    controls.append(epidemic_control(5,"Lockdown","Enter [Y] to implement a full National Lockdown, [N] to ignore this measure : ",LOCKDOWN,[20,40,5,20,30,40]))
+    
 
         
 def user_input(controls):
@@ -113,5 +114,6 @@ print("*    Thank you for taking part    *")
 print("*                                 *")
 print("*     Press F5 to play again      *")
 print("***********************************")
+
 
 
