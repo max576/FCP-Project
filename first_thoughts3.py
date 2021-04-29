@@ -9,6 +9,12 @@ MAIN PURPOSE AND ACTIONS DESCRIBED HERE
 
 
 """
+# importing from matplotlib
+# import numpy as np
+# from scipy.integrate import odeint
+# import matplotlib.pyplot as plt
+# import tkinter as tk
+
 ##bitvalues
 FACEMASKS = 1
 DISTANCING = 2
