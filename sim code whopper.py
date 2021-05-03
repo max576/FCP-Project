@@ -194,6 +194,9 @@ def plot(fig, canvas, userchoice):
 
     canvas.draw()
     canvas.get_tk_widget().pack()
+    
+    # plot1.remove()
+    # del plot1
 	# placing the canvas on the Tkinter window
     #canvas.get_tk_widget().pack()
 
