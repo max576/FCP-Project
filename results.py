@@ -14,7 +14,7 @@ def display_results():
     results_window = tk.Tk() 
     
     results_window.title("COVID Simulator")
-    # results_window.tk.call('wm', 'iconphoto', results_window._w, tk.PhotoImage(file='icon.png'))
+    results_window.tk.call('wm', 'iconphoto', results_window._w, tk.PhotoImage(file='icon.png'))
     results_window.geometry('1200x1000')
     results_frame1 = tk.Frame(master=results_window, width=50, height=50, bg="red")
     results_frame1.pack(fill=tk.BOTH)
