@@ -22,7 +22,7 @@ MAGIC_NUMBER = 10000
 
 # Always keep imports active
 import tkinter as tk
-from Welcome import display_welcome_screen
+from welcome import display_welcome_screen
 from results import display_results
 import random
 from matplotlib.figure import Figure
