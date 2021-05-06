@@ -17,7 +17,7 @@ INVALID_ENTRY = 0
 MAGIC_NUMBER = 10000
 
 
-# Afew examples of programs using Tkinter taken from https://realpython.com/python-gui-tkinter/#building-a-temperature-converter-example-app it's helpful to have this open whilst looking at the examples.
+# A few examples of programs using Tkinter taken from https://realpython.com/python-gui-tkinter/#building-a-temperature-converter-example-app it's helpful to have this open whilst looking at the examples.
 # Comment and uncomment examples one at a time
 
 # Always keep imports active
@@ -44,11 +44,11 @@ def initialize_controls(controls):
     
     ###IMPROVEMENT - provide csv initialize option for control list parameters
     
-    controls.append(epidemic_control(0,"Distancing & Facemasks","Enter [Y] to implement 2 metre social distancing rules, [N] to ignore this measure : ",DISTANCING,[0.6,0.7,0.9,0.9,0.8,0.6]))
-    controls.append(epidemic_control(1,"Early Closing","Enter [Y] to implement pubs early closing, [N] to ignore this measure : " ,PUBS,[1.7,1.7,1.7,1.7,1.7,1.7]))
-    controls.append(epidemic_control(2,"Close Non-essential Shops","Enter [Y] to close non-essential shops, [N] to ignore this measure : ",NON_ESSENTIAL,[0.7,0.7,0.9,0.9,0.8,0.7]))
-    controls.append(epidemic_control(3,"Close International Borders","Enter [Y] to close international borders, [N] to ignore this measure : ",BORDERS,[0.7,0.7,0.7,0.7,0.7,0.7]))
-    controls.append(epidemic_control(4,"Total Lockdown","Enter [Y] to implement a full National Lockdown, [N] to ignore this measure : ",LOCKDOWN,[0.4,0.4,0.7,0.8,0.6,0.3]))
+    controls.append(epidemic_control(0,"Distancing & Facemasks","Although this is the most basic measure, it is one of the most effective at inhibiting the spread of disease. However, it may affect people's mental wellbeing as you're unable to hug your loved ones and it may affect the economy as shops and restaurants are unlikely to do as well if fewer people are allowed in them as they must be spread further apart. ",DISTANCING,[0.6,0.7,0.9,0.9,0.8,0.6]))
+    controls.append(epidemic_control(1,"Early Closing","This will significantly affect the economy as there won't be as much revenue coming in to the pubs. Also, the average British person won't be too happy about this." ,PUBS,[1.7,1.7,1.7,1.7,1.7,1.7]))
+    controls.append(epidemic_control(2,"Close Non-essential Shops","Shops play a huge role in the country's economy - if they were to close, many people would lose their jobs and have to go on furlough, and the government would suffer, as would the mental wellbeing of the people who no longer have a day job, and some independent shops may have to close permanently due to the lack of income. However, indoor spaces are a breeding ground for viruses like Covid-19. ",NON_ESSENTIAL,[0.7,0.7,0.9,0.9,0.8,0.7]))
+    controls.append(epidemic_control(3,"Close International Borders","Although closing the borders will make it much harder for Covid-19 and its new variants to spread to the UK, it will have a huge impact on the airline industry. It also stops family and friends who live abroad from seeing each other which will affect their wellbeing, as well as stop people from taking nice mental breaks to go on holiday.",BORDERS,[0.7,0.7,0.7,0.7,0.7,0.7]))
+    controls.append(epidemic_control(4,"Total Lockdown","A full scale lockdown is the best measure to control the spread of the virus, but would have devastating effects both socially and econmically: children won't get their necessary social interactions and their learning will be affected, people won't get to see their family and friends, which is an integral part of human nature, and won't be able to go to work; many people would have to work from home or go on furlough, and the government, as well as business owners for example would struggle financially, just to name a few. ",LOCKDOWN,[0.4,0.4,0.7,0.8,0.6,0.3]))
     
 
 class period:
@@ -77,19 +77,19 @@ def initialize_periods(periods):
         
 #def drawUI(window,ctl,periods):
     
-def on_enter(event):
-    # ctl = []
-    # i = 0
-    # # List (0-5) to hold each checkbox selection
-    # # cb_var = []
-    # while i != len(ctl):
-    #     label4.configure(text=ctl[i].prompt)
-    label4.configure(text="willy")
+def on_enter(event, prompt):
+    ctl = []
+    i = 0
+    #List (0-5) to hold each checkbox selection
+    #cb_var = []
+    while i != len(ctl):
+        label4.configure(text=ctl[i].prompt)
+    #label4.configure(text="willy")
 def on_leave(event):
     label4.configure(text="")    
 
 
-def plot_and_move_next_period(fig, canvas, cb_var,):
+def plot_and_move_next_period(fig, canvas, cb_var):
    #plot chart for this period
     n = 0
     cb = 0
