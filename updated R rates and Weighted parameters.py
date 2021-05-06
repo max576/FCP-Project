@@ -61,11 +61,11 @@ def initialize_periods(periods):
     ###IMPROVEMENT - provide csv import option for period content
 
     periods.append(period(0, 3.2,"Period 1 - January / February","The Health Secretary has informed you that the initial R-Rate is 3.2\n\n Of course, it is very cold throughout January and February and people are naturally coming down\n with the flu over winter. As a rule, spending is low across the UK in retail, but the public still desire\n eating out and drinking in cosy pubs. Although, it is proven that keeping pubs open has a direct\n correlation against the spread of virus. The health secretary advises against keeping cosy pubs open\n\n"))
-    periods.append(period(1, 2.7,"Period 2 - March and April","Place holder for story for period 2"))
-    periods.append(period(2, 2.1,"Period 3","Place holder for story for period 3 "))
-    periods.append(period(3, 1.5,"Period 4","Place holder for story for period 4 "))
-    periods.append(period(4, 2.0,"Period 5","Place holder for story for period 5 "))
-    periods.append(period(5, 2.9,"Period 6","Place holder for story for period 6 "))
+    periods.append(period(1, 2.7,"Period 2 - March / April","Some improvement can be seen as the R-Rate has lowered to 2.7\n\n A few sunny spells here and there are making the public excited for the summer to come,\n longing for a holiday abroad. It's not surprising that people are eager to go out for a nice meal and/n some drinks with their friends - a bottomless brunch is sounding very appetising at the moment\n - even though british weather may not always cooperate.\n\n"))
+    periods.append(period(2, 2.1,"Period 3 - May / June","Place holder for story for period 3 "))
+    periods.append(period(3, 1.5,"Period 4 - July / August","Place holder for story for period 4 "))
+    periods.append(period(4, 2.0,"Period 5 - September / October","Place holder for story for period 5 "))
+    periods.append(period(5, 2.9,"Period 6 - November / December","Place holder for story for period 6 "))
     
         
 #def drawUI(window,ctl,periods):
