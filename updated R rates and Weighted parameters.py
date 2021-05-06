@@ -92,7 +92,28 @@ def display_welcome_screen():
     
     tk.Button(welcome_window, text="Start!", command=welcome_window.destroy, fg="dark green", bg = "white").pack()
     #display welcome_window, destroyed by button press above
-    welcome_window.mainloop() 
+    welcome_window.mainloop()
+	
+def display_end_screen():
+    
+    end_window = tk.Tk()
+    
+    end_window.title("COVID Simulator")
+    end_window.geometry('1200x1000')
+    end_frame1 = tk.Frame(master=end_window, width=50, height=50, bg="red")
+    end_frame1.pack(fill=tk.BOTH)
+
+    end_label1 = tk.Label(master=end_frame1, bg="red", fg="white",text= "Thank you for using our covid 19 simulator")  
+    end_label1.pack()
+    
+    end_frame2 = tk.Frame(master=end_window, width=50, height=50, bg="white")
+    end_frame2.pack()
+
+    end_label2 = tk.Label(master=end_frame2, text= "Congratulations!" + "\n\n enter end message here")  
+    end_label2.pack()
+    
+    tk.Button(end_window, text="Quit", command=end_window.destroy, fg= "dark green",bg= "white").pack()
+    end_window.mainloop()      	
 
 def plot_and_move_next_period(fig, canvas, cb_var):
    #plot chart for this period
@@ -113,6 +134,7 @@ def plot_and_move_next_period(fig, canvas, cb_var):
     if current_period.get() == len(periods)-1 : 
         next_button["state"] = "disabled"
         next_button["text"] = "Finished!"
+	display_end_screen()
     else:
         current_period.set(current_period.get() + 1)
         pName.set(periods[current_period.get()].name + "\n\n" + periods[current_period.get()].story)
