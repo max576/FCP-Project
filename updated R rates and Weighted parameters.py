@@ -134,7 +134,7 @@ def plot_and_move_next_period(fig, canvas, cb_var):
     if current_period.get() == len(periods)-1 : 
         next_button["state"] = "disabled"
         next_button["text"] = "Finished!"
-	display_end_screen()
+        display_end_screen()
     else:
         current_period.set(current_period.get() + 1)
         pName.set(periods[current_period.get()].name + "\n\n" + periods[current_period.get()].story)
