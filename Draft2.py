@@ -22,16 +22,19 @@ MAGIC_NUMBER = 10000
 
 # Always keep imports active
 import tkinter as tk
-from welcome import display_welcome_screen
-from results import display_results
+# from welcome import display_welcome_screen
+# from results import display_results
+import numpy as np
 import random
+import matplotlib
+import matplotlib.pyplot as plt
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg,
 NavigationToolbar2Tk)
 
 
 class epidemic_control:
-    def __init__(self, controlid,name, prompt, bitvalue, weight):
+    def __init__(self, controlid,name, prompt, bitvalue, weight, cost):
         # Basic simulation parameters:
         self.controlid = controlid
         self.name = name
@@ -39,16 +42,17 @@ class epidemic_control:
         self.bitvalue = bitvalue
         #controls effect on R-Rate
         self.weight = weight
+        self.cost = cost
 
 def initialize_controls(controls):
     
     ###IMPROVEMENT - provide csv initialize option for control list parameters
     
-    controls.append(epidemic_control(0,"Distancing & Facemasks","Although this is the most basic measure, it is one of the most effective at inhibiting the spread of disease. However, it may affect people's mental wellbeing as you're unable to hug your loved ones and it may affect the economy as shops and restaurants are unlikely to do as well if fewer people are allowed in them as they must be spread further apart. ",DISTANCING,[0.6,0.7,0.9,0.9,0.8,0.6]))
-    controls.append(epidemic_control(1,"Early Closing","This will significantly affect the economy as there won't be as much revenue coming in to the pubs. Also, the average British person won't be too happy about this." ,PUBS,[1.7,1.7,1.7,1.7,1.7,1.7]))
-    controls.append(epidemic_control(2,"Close Non-essential Shops","Shops play a huge role in the country's economy - if they were to close, many people would lose their jobs and have to go on furlough, and the government would suffer, as would the mental wellbeing of the people who no longer have a day job, and some independent shops may have to close permanently due to the lack of income. However, indoor spaces are a breeding ground for viruses like Covid-19. ",NON_ESSENTIAL,[0.7,0.7,0.9,0.9,0.8,0.7]))
-    controls.append(epidemic_control(3,"Close International Borders","Although closing the borders will make it much harder for Covid-19 and its new variants to spread to the UK, it will have a huge impact on the airline industry. It also stops family and friends who live abroad from seeing each other which will affect their wellbeing, as well as stop people from taking nice mental breaks to go on holiday.",BORDERS,[0.7,0.7,0.7,0.7,0.7,0.7]))
-    controls.append(epidemic_control(4,"Total Lockdown","A full scale lockdown is the best measure to control the spread of the virus, but would have devastating effects both socially and econmically: children won't get their necessary social interactions and their learning will be affected, people won't get to see their family and friends, which is an integral part of human nature, and won't be able to go to work; many people would have to work from home or go on furlough, and the government, as well as business owners for example would struggle financially, just to name a few. ",LOCKDOWN,[0.4,0.4,0.7,0.8,0.6,0.3]))
+    controls.append(epidemic_control(0,"Distancing & Facemasks","Although this is the most basic measure, it is one of the most effective at inhibiting the spread of disease. However, it may affect people's mental wellbeing as you're unable to hug your loved ones and it may affect the economy as shops and restaurants are unlikely to do as well if fewer people are allowed in them as they must be spread further apart. ",DISTANCING,[0.6,0.7,0.9,0.9,0.8,0.6], 10000))
+    controls.append(epidemic_control(1,"Early Closing","This will significantly affect the economy as there won't be as much revenue coming in to the pubs. Also, the average British person won't be too happy about this." ,PUBS,[1.7,1.7,1.7,1.7,1.7,1.7], 20000))
+    controls.append(epidemic_control(2,"Close Non-essential Shops","Shops play a huge role in the country's economy - if they were to close, many people would lose their jobs and have to go on furlough, and the government would suffer, as would the mental wellbeing of the people who no longer have a day job, and some independent shops may have to close permanently due to the lack of income. However, indoor spaces are a breeding ground for viruses like Covid-19. ",NON_ESSENTIAL,[0.7,0.7,0.9,0.9,0.8,0.7], 30000))
+    controls.append(epidemic_control(3,"Close International Borders","Although closing the borders will make it much harder for Covid-19 and its new variants to spread to the UK, it will have a huge impact on the airline industry. It also stops family and friends who live abroad from seeing each other which will affect their wellbeing, as well as stop people from taking nice mental breaks to go on holiday.",BORDERS,[0.7,0.7,0.7,0.7,0.7,0.7], 40000))
+    controls.append(epidemic_control(4,"Total Lockdown","A full scale lockdown is the best measure to control the spread of the virus, but would have devastating effects both socially and econmically: children won't get their necessary social interactions and their learning will be affected, people won't get to see their family and friends, which is an integral part of human nature, and won't be able to go to work; many people would have to work from home or go on furlough, and the government, as well as business owners for example would struggle financially, just to name a few. ",LOCKDOWN,[0.4,0.4,0.7,0.8,0.6,0.3], 50000))
     
 
 class period:
@@ -77,14 +81,14 @@ def initialize_periods(periods):
         
 #def drawUI(window,ctl,periods):
     
-def on_enter(event, prompt):
+def on_enter(prompt, event):
     ctl = []
     i = 0
     #List (0-5) to hold each checkbox selection
     #cb_var = []
     while i != len(ctl):
         label4.configure(text=ctl[i].prompt)
-    #label4.configure(text="willy")
+    # label4.configure(text="willy")
 def on_leave(event):
     label4.configure(text="")    
 
@@ -108,7 +112,8 @@ def plot_and_move_next_period(fig, canvas, cb_var):
     if current_period.get() == len(periods)-1 : 
         next_button["text"] = "Results"
         next_button["state"] = "enabled"
-        next_button.configure(text = "Results", command = display_results())
+        # next_button.configure(text = "Results", command = display_results()
+        window.destroy()
 
     else:
         current_period.set(current_period.get() + 1)
@@ -182,6 +187,7 @@ def plot(fig, canvas, userchoice):
     plot1.set_xlabel('Period')
     plot1.set_ylabel('Death toll (people)')
     plot1.set_title('Death Toll after parameter ')
+    
 
     #plot1.plot(y)
 
@@ -193,6 +199,7 @@ def plot(fig, canvas, userchoice):
     
     if currPeriod() > 0:  plot1.remove()
     if currPeriod() > 0: del plot1
+    if currPeriod() > 4: plot1.savefig('results.jpg')
     
     # plot1.remove()
     # del plot1
@@ -210,7 +217,22 @@ def plot(fig, canvas, userchoice):
 	# placing the toolbar on the Tkinter window
 # 	canvas.get_tk_widget().pack()
 
+    
 
+# def econ():
+    
+    
+    
+    
+
+# def pie():
+    
+#     y = np.array([35, 25, 25, 15])
+
+#     plt.pie(y)
+#     plt.show() 
+    
+    
 ###############
 #
 #  M A I N
@@ -229,7 +251,9 @@ initialize_periods(periods)
 userchoice = []
 
 #call welcome screen function, destroy window on button press
+from welcome import display_welcome_screen
 display_welcome_screen()
+
 
 #Instantiate tkinter window
 window = tk.Tk() 
@@ -305,5 +329,5 @@ tk.Button(window, text="Quit", command=window.destroy, fg="dark green", bg = "wh
 
 window.mainloop() #used to make the program work
 
-    
+from results import display_results
 display_results()
