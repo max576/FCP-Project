@@ -49,14 +49,20 @@ def display_results():
     
 
     
-    image1 = Image.open("results.jpg")
+    image1 = Image.open("plot1.jpg")
     test = ImageTk.PhotoImage(image1)
     label1 = tk.Label(master = results_frame3, image = test)
     label1.image = test
     label1.pack()
     
-    # results_frame4 = tk.Frame(master=results_window, width=50, height=50,)
-    # results_frame4.pack()
+    results_frame4 = tk.Frame(master=results_window, width=50, height=50,)
+    results_frame4.pack()
+    
+    image2 = Image.open("plot2.jpg")
+    test2 = ImageTk.PhotoImage(image2)
+    label2 = tk.Label(master = results_frame4, image = test2)
+    label2.image = test2
+    label2.pack()
 
     
     tk.Button(results_window, text="Quit", command=results_window.destroy, fg="dark green", bg = "white").pack() 

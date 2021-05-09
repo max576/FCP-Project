@@ -27,7 +27,7 @@ import tkinter as tk
 import numpy as np
 import random
 import matplotlib
-import matplotlib.pyplot as plt
+from matplotlib import pyplot as plt
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg,
 NavigationToolbar2Tk)
@@ -81,14 +81,14 @@ def initialize_periods(periods):
         
 #def drawUI(window,ctl,periods):
     
-def on_enter(prompt, event):
-    ctl = []
-    i = 0
-    #List (0-5) to hold each checkbox selection
-    #cb_var = []
-    while i != len(ctl):
-        label4.configure(text=ctl[i].prompt)
-    # label4.configure(text="willy")
+def on_enter(event):
+    # ctl = []
+    # i = 0
+    # #List (0-5) to hold each checkbox selection
+    # #cb_var = []
+    # while i != len(ctl):
+    #     label4.configure(text=ctl[i].prompt)
+    label4.configure(text="willy")
 def on_leave(event):
     label4.configure(text="")    
 
@@ -106,6 +106,7 @@ def plot_and_move_next_period(fig, canvas, cb_var):
     userchoice.append(cb)
 
     plot(fig, canvas, userchoice)
+
     
     
     #final period? disable button otherwese set next period and  load  next period instructions
@@ -113,7 +114,7 @@ def plot_and_move_next_period(fig, canvas, cb_var):
         next_button["text"] = "Results"
         next_button["state"] = "enabled"
         # next_button.configure(text = "Results", command = display_results()
-        window.destroy()
+        # window.destroy()
 
     else:
         current_period.set(current_period.get() + 1)
@@ -180,6 +181,7 @@ def plot(fig, canvas, userchoice):
     plot1 = fig.add_subplot(111)
  	# plotting the graph
 
+
     plot1.plot(x, y, label = "Your Guess")
     plot1.plot(x, y2, label = "Unhinged")
 
@@ -187,7 +189,7 @@ def plot(fig, canvas, userchoice):
     plot1.set_xlabel('Period')
     plot1.set_ylabel('Death toll (people)')
     plot1.set_title('Death Toll after parameter ')
-    
+
 
     #plot1.plot(y)
 
@@ -197,9 +199,10 @@ def plot(fig, canvas, userchoice):
     canvas.draw()
     canvas.get_tk_widget().pack()
     
+   
     if currPeriod() > 0:  plot1.remove()
     if currPeriod() > 0: del plot1
-    if currPeriod() > 4: plot1.savefig('results.jpg')
+    if currPeriod() >= 5: plt.savefig('plot1.jpg')
     
     # plot1.remove()
     # del plot1
@@ -225,12 +228,12 @@ def plot(fig, canvas, userchoice):
     
     
 
-# def pie():
+def pie():
     
-#     y = np.array([35, 25, 25, 15])
+    y = np.array([35, 25, 25, 15])
 
-#     plt.pie(y)
-#     plt.show() 
+    plt.pie(y)
+    plt.savefig('plot2.jpg')
     
     
 ###############
