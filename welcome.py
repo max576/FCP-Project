@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 Created on Wed May  5 18:02:40 2021
-
 @author: max
 """
 
@@ -14,7 +13,7 @@ def display_welcome_screen():
     welcome_window = tk.Tk() 
     
     welcome_window.title("COVID Simulator")
-    welcome_window.tk.call('wm', 'iconphoto', welcome_window._w, tk.PhotoImage(file='icon.png'))
+    # welcome_window.tk.call('wm', 'iconphoto', welcome_window._w, tk.PhotoImage(file='icon.png'))
     welcome_window.geometry('1200x1000')
     welcome_frame1 = tk.Frame(master=welcome_window, width=50, height=50, bg="red")
     welcome_frame1.pack(fill=tk.BOTH)

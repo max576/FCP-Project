@@ -1,7 +1,7 @@
+  
 # -*- coding: utf-8 -*-
 """
 Created on Wed May  5 13:59:55 2021
-
 @author: max and ben (legends)
 """
 
@@ -14,6 +14,10 @@ from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg,
 NavigationToolbar2Tk)
 
+
+def econ():
+    from draft2 import e
+    return e
 
 
 def display_results(): 
@@ -31,7 +35,7 @@ def display_results():
     results_frame2 = tk.Frame(master=results_window, width=50, height=50, bg="white")
     results_frame2.pack()
     
-    results_label2 = tk.Label(master=results_frame2, text="Results" + "\n\n blah blah blah blah blah blah blah blah\nblah blah blah blah blah blah blah blah\nblah blah blah blah blah blah blah blah\nblah blah blah blah blah blah blah blah\nblah blah blah blah blah blah blah blah\nblah blah blah blah blah blah blah blah\n")
+    results_label2 = tk.Label(master=results_frame2, text="Results [" + str(econ()) + "]\n\n blah blah blah blah blah blah blah blah\nblah blah blah blah blah blah blah blah\nblah blah blah blah blah blah blah blah\nblah blah blah blah blah blah blah blah\nblah blah blah blah blah blah blah blah\nblah blah blah blah blah blah blah blah\n")
     results_label2.pack()
     
 
@@ -69,9 +73,3 @@ def display_results():
     #display welcome_window, destroyed by button press above
     results_window.mainloop() 
     
-
-
-
-
-
-
