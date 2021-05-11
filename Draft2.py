@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Created on Tue Apr 27 12:38:24 2021
-@author: ben
+@author: max and ben (legends)
 """
 
 #!/usr/bin/python
@@ -48,11 +48,11 @@ def initialize_controls(controls):
     
     ###IMPROVEMENT - provide csv initialize option for control list parameters
     
-    controls.append(epidemic_control(0,"Distancing & Facemasks","Although this is the most basic measure, it is one of the most effective at inhibiting the spread of disease. However, it may affect people's mental wellbeing as you're unable to hug your loved ones and it may affect the economy as shops and restaurants are unlikely to do as well if fewer people are allowed in them as they must be spread further apart. ",DISTANCING,[0.6,0.7,0.9,0.9,0.8,0.6], 10000))
-    controls.append(epidemic_control(1,"Early Closing","This will significantly affect the economy as there won't be as much revenue coming in to the pubs. Also, the average British person won't be too happy about this." ,PUBS,[1.7,1.7,1.7,1.7,1.7,1.7], 20000))
-    controls.append(epidemic_control(2,"Close Non-essential Shops","Shops play a huge role in the country's economy - if they were to close, many people would lose their jobs and have to go on furlough, and the government would suffer, as would the mental wellbeing of the people who no longer have a day job, and some independent shops may have to close permanently due to the lack of income. However, indoor spaces are a breeding ground for viruses like Covid-19. ",NON_ESSENTIAL,[0.7,0.7,0.9,0.9,0.8,0.7], 30000))
-    controls.append(epidemic_control(3,"Close International Borders","Although closing the borders will make it much harder for Covid-19 and its new variants to spread to the UK, it will have a huge impact on the airline industry. It also stops family and friends who live abroad from seeing each other which will affect their wellbeing, as well as stop people from taking nice mental breaks to go on holiday.",BORDERS,[0.7,0.7,0.7,0.7,0.7,0.7], 40000))
-    controls.append(epidemic_control(4,"Total Lockdown","A full scale lockdown is the best measure to control the spread of the virus, but would have devastating effects both socially and econmically: children won't get their necessary social interactions and their learning will be affected, people won't get to see their family and friends, which is an integral part of human nature, and won't be able to go to work; many people would have to work from home or go on furlough, and the government, as well as business owners for example would struggle financially, just to name a few. ",LOCKDOWN,[0.4,0.4,0.7,0.8,0.6,0.3], 50000))
+    controls.append(epidemic_control(0,"Distancing & Facemasks","Although this is the most basic measure, it is one of the most effective at inhibiting the spread of disease. However, it may affect people's mental wellbeing as you're unable to hug your loved ones and it may affect the economy as shops and restaurants are unlikely to do as well if fewer people are allowed in them as they must be spread further apart. ",DISTANCING,[0.6,0.7,0.9,0.9,0.8,0.6], 3900000000))
+    controls.append(epidemic_control(1,"Early Closing","This will significantly affect the economy as there won't be as much revenue coming in to the pubs. Also, the average British person won't be too happy about this." ,PUBS,[1.7,1.7,1.7,1.7,1.7,1.7], 1900000000))
+    controls.append(epidemic_control(2,"Close Non-essential Shops","Shops play a huge role in the country's economy - if they were to close, many people would lose their jobs and have to go on furlough, and the government would suffer, as would the mental wellbeing of the people who no longer have a day job, and some independent shops may have to close permanently due to the lack of income. However, indoor spaces are a breeding ground for viruses like Covid-19. ",NON_ESSENTIAL,[0.7,0.7,0.9,0.9,0.8,0.7], 16000000000))
+    controls.append(epidemic_control(3,"Close International Borders","Although closing the borders will make it much harder for Covid-19 and its new variants to spread to the UK, it will have a huge impact on the airline industry. It also stops family and friends who live abroad from seeing each other which will affect their wellbeing, as well as stop people from taking nice mental breaks to go on holiday.",BORDERS,[0.7,0.7,0.7,0.7,0.7,0.7], 64000000000))
+    controls.append(epidemic_control(4,"Total Lockdown","A full scale lockdown is the best measure to control the spread of the virus, but would have devastating effects both socially and econmically: children won't get their necessary social interactions and their learning will be affected, people won't get to see their family and friends, which is an integral part of human nature, and won't be able to go to work; many people would have to work from home or go on furlough, and the government, as well as business owners for example would struggle financially, just to name a few. ",LOCKDOWN,[0.4,0.4,0.7,0.8,0.6,0.3], 146000000000))
     
 
 class period:
@@ -82,12 +82,12 @@ def initialize_periods(periods):
 #def drawUI(window,ctl,periods):
     
 def on_enter(event):
-    # ctl = []
+    # # ctl = []
     # i = 0
     # #List (0-5) to hold each checkbox selection
     # #cb_var = []
     # while i != len(ctl):
-    #     label4.configure(text=ctl[i].prompt)
+    #     label4.configure(text=ctl[i].prompt) 
     label4.configure(text="willy")
 def on_leave(event):
     label4.configure(text="")    
@@ -202,7 +202,7 @@ def plot(fig, canvas, userchoice):
    
     if currPeriod() > 0:  plot1.remove()
     if currPeriod() > 0: del plot1
-    if currPeriod() >= 5: plt.savefig('plot1.jpg')
+    plt.savefig('plot1.jpg')
     
     # plot1.remove()
     # del plot1
@@ -222,18 +222,62 @@ def plot(fig, canvas, userchoice):
 
     
 
-# def econ():
+# Economic cost of each parameter, this function will save the cost of each period, to then be totalled for the final results and called by the pie chart function
+def econ():
     
+    uc=0
+    e=0
     
+    #For the number of periods enteres so far...
+    while uc != len(userchoice):   
+       #get the actual cost for the period, store as actual
+       e = ctl[uc].cost
+      
+       print("------------------------")
+       print ("uc = " + str(uc))
+       print ("Cost " + str(ctl[uc].cost))
+       print ("ctl " + str(len(ctl)))
+
+       
+       p=0
+       #for each parameter, if the player has enabled the check box accumulate the cost
+       while p != len(ctl):
+           if (userchoice[uc] & ctl[p].bitvalue) != 0 : e = e + ctl[p].cost 
+           print ("Accumulated Cost" + str(e))
+           print ("p" + str(p))
+
+           p += 1          
+    uc += 1      
+    print ("uc" + str(uc))
+    return e 
+
     
     
 
 def pie():
     
-    y = np.array([35, 25, 25, 15])
-
-    plt.pie(y)
-    plt.savefig('plot2.jpg')
+    uc = 0
+    while uc != len(userchoice):
+        c = ctl[uc].bitvalue
+        d = ctl[uc].cost
+        
+        # print("------------------------")
+        # print ("uc = " + str(uc))
+        # print ("Cost " + str(ctl[uc].bitvalue)
+        # print ("ctl " + str(len(ctl)))
+        
+    
+    
+    fig = plt.figure()
+    ax = fig.add_axes([0,0,1,1])
+    ax.axis('equal')
+    controls = ['Distancing & Facemasks', 'Early Closing', 'Close Non-essential Shops', 'Close International Borders', 'Total Lockdown']
+    costs = [10000,2000,30000,40000,50000]
+    ax.pie(costs, labels = controls,autopct='%1.2f%%')
+    plt.title("Total Debt:" + str(econ()))
+    if currPeriod() >= 5: plt.savefig('plot2.jpg')
+    # plt.show()
+    
     
     
 ###############
@@ -332,5 +376,10 @@ tk.Button(window, text="Quit", command=window.destroy, fg="dark green", bg = "wh
 
 window.mainloop() #used to make the program work
 
+# print ("econ value [" + str(econ()) + "]")
+
+
 from results import display_results
 display_results()
+
+

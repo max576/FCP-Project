@@ -2,7 +2,7 @@
 """
 Created on Wed May  5 18:02:40 2021
 
-@author: max
+@author: max and ben (legends)
 """
 
 #!/usr/bin/python

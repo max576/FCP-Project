@@ -38,17 +38,6 @@ def display_results():
     results_frame3 = tk.Frame(master=results_window, width=50, height=50,)
     results_frame3.pack()
     
-    
-    # from Draft2 import plot
-    # fig = Figure(figsize = (7.5, 5), dpi = 105)
-    # canvas = FigureCanvasTkAgg(fig, master = results_window)
-    
-    # canvas.draw()
-    # canvas.get_tk_widget().pack()
-    
-    
-
-    
     image1 = Image.open("plot1.jpg")
     test = ImageTk.PhotoImage(image1)
     label1 = tk.Label(master = results_frame3, image = test)
@@ -63,6 +52,12 @@ def display_results():
     label2 = tk.Label(master = results_frame4, image = test2)
     label2.image = test2
     label2.pack()
+    
+    results_frame5 = tk.Frame(master=results_window, width=50, height=50, bg="white")
+    results_frame5.pack()
+    
+    results_label5 = tk.Label(master=results_frame5, text="cool beans")
+    results_label5.pack()
 
     
     tk.Button(results_window, text="Quit", command=results_window.destroy, fg="dark green", bg = "white").pack() 
