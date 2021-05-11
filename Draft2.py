@@ -82,15 +82,21 @@ def initialize_periods(periods):
 #def drawUI(window,ctl,periods):
     
 def on_enter(event):
-    # # ctl = []
+    # ctl = []
+    # #populate these lists with static data
+    # initialize_controls(ctl)
+
+
     # i = 0
     # #List (0-5) to hold each checkbox selection
     # #cb_var = []
     # while i != len(ctl):
     #     label4.configure(text=ctl[i].prompt) 
-    label4.configure(text="willy")
+    label4.configure(text="info here")
 def on_leave(event):
     label4.configure(text="")    
+    
+
 
 
 def plot_and_move_next_period(fig, canvas, cb_var):
@@ -111,9 +117,9 @@ def plot_and_move_next_period(fig, canvas, cb_var):
     
     #final period? disable button otherwese set next period and  load  next period instructions
     if current_period.get() == len(periods)-1 : 
-        next_button["text"] = "Results"
-        next_button["state"] = "enabled"
-        # next_button.configure(text = "Results", command = display_results()
+        # next_button["text"] = "Results"
+        # next_button["state"] = "enabled"
+        next_button.configure(text = "Results", command = window.destroy)
         # window.destroy()
 
     else:
@@ -177,8 +183,9 @@ def plot(fig, canvas, userchoice):
  
 
     # adding the subplot
-
+    
     plot1 = fig.add_subplot(111)
+    
  	# plotting the graph
 
 
@@ -189,6 +196,7 @@ def plot(fig, canvas, userchoice):
     plot1.set_xlabel('Period')
     plot1.set_ylabel('Death toll (people)')
     plot1.set_title('Death Toll after parameter ')
+
 
 
     #plot1.plot(y)
@@ -202,7 +210,7 @@ def plot(fig, canvas, userchoice):
    
     if currPeriod() > 0:  plot1.remove()
     if currPeriod() > 0: del plot1
-    plt.savefig('plot1.jpg')
+    if currPeriod() == 5: plt.savefig('plot1.jpg')
     
     # plot1.remove()
     # del plot1
