@@ -38,7 +38,7 @@ def display_results():
     results_frame3 = tk.Frame(master=results_window, width=50, height=50,)
     results_frame3.pack()
     
-    image1 = Image.open("plot1.jpg")
+    image1 = Image.open("plot1.png")
     test = ImageTk.PhotoImage(image1)
     label1 = tk.Label(master = results_frame3, image = test)
     label1.image = test
@@ -47,7 +47,7 @@ def display_results():
     results_frame4 = tk.Frame(master=results_window, width=50, height=50,)
     results_frame4.pack()
     
-    image2 = Image.open("plot2.jpg")
+    image2 = Image.open("plot2.png")
     test2 = ImageTk.PhotoImage(image2)
     label2 = tk.Label(master = results_frame4, image = test2)
     label2.image = test2

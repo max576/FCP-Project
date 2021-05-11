@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Created on Tue Apr 27 12:38:24 2021
-@author: max and ben (legends)
+@author: Benjamin Wyllie
 """
 
 #!/usr/bin/python
@@ -207,10 +207,9 @@ def plot(fig, canvas, userchoice):
     canvas.draw()
     canvas.get_tk_widget().pack()
     
-   
+    if currPeriod() == 5: fig.savefig('plot1.png')
     if currPeriod() > 0:  plot1.remove()
     if currPeriod() > 0: del plot1
-    if currPeriod() == 5: plt.savefig('plot1.jpg')
     
     # plot1.remove()
     # del plot1
@@ -231,60 +230,37 @@ def plot(fig, canvas, userchoice):
     
 
 # Economic cost of each parameter, this function will save the cost of each period, to then be totalled for the final results and called by the pie chart function
-def econ():
-    
-    uc=0
-    e=0
-    
-    #For the number of periods enteres so far...
-    while uc != len(userchoice):   
-       #get the actual cost for the period, store as actual
-       e = ctl[uc].cost
-      
-       print("------------------------")
-       print ("uc = " + str(uc))
-       print ("Cost " + str(ctl[uc].cost))
-       print ("ctl " + str(len(ctl)))
+  
 
-       
-       p=0
-       #for each parameter, if the player has enabled the check box accumulate the cost
-       while p != len(ctl):
-           if (userchoice[uc] & ctl[p].bitvalue) != 0 : e = e + ctl[p].cost 
+def calc_pie():
+
+    costs1 = []
+    p = 0
+    # loop around each parameter
+    while p != len(ctl):    
+       uc=0
+       e = 0
+       #for each userco, if the player has enabled the check box accumulate the cost
+       while uc != len(userchoice):
+           if (userchoice[uc] & ctl[p].bitvalue) != 0 : e = e + ctl[p].cost
            print ("Accumulated Cost" + str(e))
-           print ("p" + str(p))
-
-           p += 1          
-    uc += 1      
-    print ("uc" + str(uc))
-    return e 
-
-    
-    
-
-def pie():
-    
-    uc = 0
-    while uc != len(userchoice):
-        c = ctl[uc].bitvalue
-        d = ctl[uc].cost
-        
-        # print("------------------------")
-        # print ("uc = " + str(uc))
-        # print ("Cost " + str(ctl[uc].bitvalue)
-        # print ("ctl " + str(len(ctl)))
-        
-    
-    
+           print ("uc " + str(p))
+           uc += 1  
+       costs1.append(e)    
+       # print("COSTS " + str(costs1))       
+       # print ("finished uc " + str(uc))
+       p += 1
+       
+    # print("COSTS again" + str(costs1))
     fig = plt.figure()
     ax = fig.add_axes([0,0,1,1])
     ax.axis('equal')
     controls = ['Distancing & Facemasks', 'Early Closing', 'Close Non-essential Shops', 'Close International Borders', 'Total Lockdown']
-    costs = [10000,2000,30000,40000,50000]
-    ax.pie(costs, labels = controls,autopct='%1.2f%%')
-    plt.title("Total Debt:" + str(econ()))
-    if currPeriod() >= 5: plt.savefig('plot2.jpg')
-    # plt.show()
+    #costs = [10000,2000,30000,40000,50000]
+    ax.pie(costs1, labels = controls,autopct='%1.2f%%')
+    plt.title("Total Debt:" + str(sum(costs1)))
+    plt.savefig("plot2.png")
+    #plt.show()
     
     
     
@@ -386,6 +362,7 @@ window.mainloop() #used to make the program work
 
 # print ("econ value [" + str(econ()) + "]")
 
+calc_pie()
 
 from results import display_results
 display_results()
