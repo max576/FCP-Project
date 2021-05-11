@@ -16,6 +16,8 @@ LOCKDOWN = 16
 INVALID_ENTRY = 0
 MAGIC_NUMBER = 10000
 
+global fig, plot1
+
 
 # A few examples of programs using Tkinter taken from https://realpython.com/python-gui-tkinter/#building-a-temperature-converter-example-app it's helpful to have this open whilst looking at the examples.
 # Comment and uncomment examples one at a time
@@ -32,7 +34,6 @@ from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg,
 NavigationToolbar2Tk)
 
-
 class epidemic_control:
     def __init__(self, controlid,name, prompt, bitvalue, weight, cost):
         # Basic simulation parameters:
@@ -48,11 +49,11 @@ def initialize_controls(controls):
     
     ###IMPROVEMENT - provide csv initialize option for control list parameters
     
-    controls.append(epidemic_control(0,"Distancing & Facemasks","Although this is the most basic measure, it is one of the most effective at inhibiting the spread of disease. However, it may affect people's mental wellbeing as you're unable to hug your loved ones and it may affect the economy as shops and restaurants are unlikely to do as well if fewer people are allowed in them as they must be spread further apart. ",DISTANCING,[0.6,0.7,0.9,0.9,0.8,0.6], 3900000000))
-    controls.append(epidemic_control(1,"Early Closing","This will significantly affect the economy as there won't be as much revenue coming in to the pubs. Also, the average British person won't be too happy about this." ,PUBS,[1.7,1.7,1.7,1.7,1.7,1.7], 1900000000))
-    controls.append(epidemic_control(2,"Close Non-essential Shops","Shops play a huge role in the country's economy - if they were to close, many people would lose their jobs and have to go on furlough, and the government would suffer, as would the mental wellbeing of the people who no longer have a day job, and some independent shops may have to close permanently due to the lack of income. However, indoor spaces are a breeding ground for viruses like Covid-19. ",NON_ESSENTIAL,[0.7,0.7,0.9,0.9,0.8,0.7], 16000000000))
-    controls.append(epidemic_control(3,"Close International Borders","Although closing the borders will make it much harder for Covid-19 and its new variants to spread to the UK, it will have a huge impact on the airline industry. It also stops family and friends who live abroad from seeing each other which will affect their wellbeing, as well as stop people from taking nice mental breaks to go on holiday.",BORDERS,[0.7,0.7,0.7,0.7,0.7,0.7], 64000000000))
-    controls.append(epidemic_control(4,"Total Lockdown","A full scale lockdown is the best measure to control the spread of the virus, but would have devastating effects both socially and econmically: children won't get their necessary social interactions and their learning will be affected, people won't get to see their family and friends, which is an integral part of human nature, and won't be able to go to work; many people would have to work from home or go on furlough, and the government, as well as business owners for example would struggle financially, just to name a few. ",LOCKDOWN,[0.4,0.4,0.7,0.8,0.6,0.3], 146000000000))
+    controls.append(epidemic_control(0,"Distancing & Facemasks","Although this is the most basic measure, it is one of the most effective\n at inhibiting the spread of disease. However, it may affect people's mental wellbeing as you're unable\n to hug your loved ones and it may affect the economy as shops and restaurants are unlikely to do as well\n if fewer people are allowed in them as they must be spread further apart. ",DISTANCING,[0.6,0.7,0.9,0.9,0.8,0.6], 3900000000))
+    controls.append(epidemic_control(1,"Early Closing","This will significantly affect the economy as there won't be as much revenue coming\n in to the pubs. Also, the average British person won't be too happy about this." ,PUBS,[1.7,1.7,1.7,1.7,1.7,1.7], 1900000000))
+    controls.append(epidemic_control(2,"Close Non-essential Shops","Shops play a huge role in the country's economy - if they were to close,\n many people would lose their jobs and have to go on furlough, and the government would suffer, as\n would the mental wellbeing of the people who no longer have a day job, and some independent shops may have\n to close permanently due to the lack of income. However, indoor spaces are a breeding ground for\n viruses like Covid-19. ",NON_ESSENTIAL,[0.7,0.7,0.9,0.9,0.8,0.7], 16000000000))
+    controls.append(epidemic_control(3,"Close International Borders","Although closing the borders will make it much harder for Covid-19 and\n its new variants to spread to the UK, it will have a huge impact on the airline industry. It also\n stops family and friends who live abroad from seeing each other which will affect their wellbeing, as well\n as stop people from taking nice mental breaks to go on holiday.",BORDERS,[0.7,0.7,0.7,0.7,0.7,0.7], 64000000000))
+    controls.append(epidemic_control(4,"Total Lockdown","A full scale lockdown is the best measure to control the spread of the virus, but would\n have devastating effects both socially and econmically: children won't get their necessary\n social interactions and their learning will be affected, people won't get to see their family and friends,\n which is an integral part of human nature, and won't be able to go to work; many people would have\n to work from home or go on furlough, and the government, as well as business owners for example would struggle financially, just to name a few. ",LOCKDOWN,[0.4,0.4,0.7,0.8,0.6,0.3], 146000000000))
     
 
 class period:
@@ -68,12 +69,12 @@ def initialize_periods(periods):
 
     ###IMPROVEMENT - provide csv import option for period content
 
-    periods.append(period(0, 3.2,"Period 1 - January and February","The Health Secretary has informed you that the initial R-Rate is 3.2\n\n Of course, it is very cold throughout January and February and people are naturally coming down\n with the flu over winter. As a rule, spending is low across the UK in retail, but the public still desire\n eating out and drinking in cosy pubs. Although, it is proven that keeping pubs open has a direct\n correlation against the spread of virus. The health secretary advises against keeping cosy pubs open\n\n"))
-    periods.append(period(1, 2.7,"Period 2 - March and April","The Health Secretary has informed you that the new R-Rate is 2.7\n\nThere are tens of thousands of young people currently travelling around South East Asia in hope to\n ‘find themselves’, where there is another variant of a similar virus here in the UK spreading\n simultaneously. A national lockdown has been advised as the spread of the virus has gone\n worldwide, although this is due to have severe economic downfall, and also cause a mental health\n crisis as people aren’t prepared to completely change their lifestyle.\n"))
-    periods.append(period(2, 2.1,"Period 3 - May and June","The Health Secretary has informed you that the new R-Rate is 2.1\n\nAs the summer months are closely approaching, temperatures are rising to a point where the virus is\n less transmittable. Many student and young people have upcoming exams, which they are\n severely stressed about.\n "))
-    periods.append(period(3, 1.5,"Period 4 - July and August","The Health Secretary has informed you that the new R-Rate is 1.5\n\n Summer is among us. The\n public are craving a more relaxed set of restrictions as the vast majority of the population have felt\n very isolated and nervous this year, due to the level of uncertainty brought by the virus.\n "))
-    periods.append(period(4, 2.0,"Period 5 - September and October","The Health Secretary has informed you that the new R-Rate is 2.0\n\n As summer closes to an end,\n the new academic year is looming over us. Students and staff seek security and certainty for\n the coming months, as the previous academic year has been meddled with by the scare and\n anxiety of the virus, and different parameters put into place in hope to reduce the R-rate.\n"))
-    periods.append(period(5, 2.9,"Period 6 - November and December","The Health Secretary has informed you that the new R-Rate is 2.9\n\n As we edge into Winter, a\n sharp bite in dropping temperatures swarm the UK, giving the virus a stronger environment to spread and\n mutate in. Arriving close to December, retail and hospitality face busiest periods of the\n year, in hope of capitalising on what been a terrible year otherwise. After this period, the\n vaccine will be ready for distribution and the simulation will come to an end, giving you the chance\n to reflect on your decisions over these last 12 months as PM\n"))
+    periods.append(period(0, 3.2,"Period 1 - January / February","The Health Secretary has informed you that the initial R-Rate is 3.2\n\n Of course, it is very cold throughout January and February and people are naturally coming down\n with the flu over winter. As a rule, spending is low across the UK in retail, but the public still desire\n eating out and drinking in cosy pubs. Although, it is proven that keeping pubs open has a direct\n correlation against the spread of virus. The health secretary advises against keeping cosy pubs open\n\n"))
+    periods.append(period(1, 2.7,"Period 2 - March and April","Place holder for story for period 2"))
+    periods.append(period(2, 2.1,"Period 3","Place holder for story for period 3 "))
+    periods.append(period(3, 1.5,"Period 4","Place holder for story for period 4 "))
+    periods.append(period(4, 2.0,"Period 5","Place holder for story for period 5 "))
+    periods.append(period(5, 2.9,"Period 6","Place holder for story for period 6 "))
     
 # def exit():
 #     exit()
@@ -82,22 +83,14 @@ def initialize_periods(periods):
 #def drawUI(window,ctl,periods):
     
 def on_enter(event):
-    # ctl = []
-    # #populate these lists with static data
-    # initialize_controls(ctl)
+    label4.configure(textvariable=pPrompt)
 
-
-    # i = 0
-    # #List (0-5) to hold each checkbox selection
-    # #cb_var = []
-    # while i != len(ctl):
-    #     label4.configure(text=ctl[i].prompt) 
-    label4.configure(text="info here")
+    # label4.configure(text="info here")
 def on_leave(event):
     label4.configure(text="")    
     
 
-
+# def move_on():
 
 def plot_and_move_next_period(fig, canvas, cb_var):
    #plot chart for this period
@@ -120,7 +113,7 @@ def plot_and_move_next_period(fig, canvas, cb_var):
         # next_button["text"] = "Results"
         # next_button["state"] = "enabled"
         next_button.configure(text = "Results", command = window.destroy)
-        # window.destroy()
+
 
     else:
         current_period.set(current_period.get() + 1)
@@ -185,17 +178,17 @@ def plot(fig, canvas, userchoice):
     # adding the subplot
     
     plot1 = fig.add_subplot(111)
-    
+
  	# plotting the graph
 
 
-    plot1.plot(x, y, label = "With chosen parameters")
-    plot1.plot(x, y2, label = "Without any parameters implemented")
+    plot1.plot(x, y, label = "Your Guess")
+    plot1.plot(x, y2, label = "Unhinged")
 
-    plot1.legend(['With chosen parameters','Without any parameters implemented']) 
+    plot1.legend(['Your Guess','Unhinged']) 
     plot1.set_xlabel('Period')
     plot1.set_ylabel('Death toll (people)')
-    plot1.set_title('Deaths Due to Covid-19')
+    plot1.set_title('Death Toll after parameter ')
 
 
 
@@ -207,10 +200,10 @@ def plot(fig, canvas, userchoice):
     canvas.draw()
     canvas.get_tk_widget().pack()
     
-   
+    if currPeriod() == 0: plt.savefig('plot1.jpg')
     if currPeriod() > 0:  plot1.remove()
     if currPeriod() > 0: del plot1
-    if currPeriod() == 5: plt.savefig('plot1.jpg')
+
     
     # plot1.remove()
     # del plot1
@@ -302,7 +295,7 @@ actuals = []
 initialize_controls(ctl)
 initialize_periods(periods)
 #Instantiate a list to store the players selection of 
-#control measures for each period (strored as bitvalue)
+#control measures for each period (stored as bitvalue)
 userchoice = []
 
 #call welcome screen function, destroy window on button press
@@ -313,9 +306,12 @@ display_welcome_screen()
 #Instantiate tkinter window
 window = tk.Tk() 
 #Instantiate tkinter int to identify current period 
-#and current period instructions
+#and current perriod instructions
 current_period = tk.IntVar()
 pName = tk.StringVar()
+    
+current_ctl = tk.IntVar()
+pPrompt = tk.StringVar()
 
 ####Tkinter window and widget definitions
 
@@ -324,14 +320,14 @@ window.tk.call('wm', 'iconphoto', window._w, tk.PhotoImage(file='icon.png'))
 #width x height
 window.geometry('1200x1000')
 
-# create frame / label for title banner 
+# create frame / label for  title banner 
 frame1 = tk.Frame(master=window, width=50, height=200, bg="red")
 frame1.pack(fill=tk.BOTH)
 
 label1 = tk.Label(master=frame1, bg="red", fg="white", text = "Hello and welcome to our covid 19 simulator") 
 label1.pack()
 
-# create frame / label for period instructions
+# create frame / label for Period instructions
 frame2 = tk.Frame(master=window, width=50, height=50, bg="white")
 frame2.pack()
 
@@ -341,6 +337,8 @@ label2 = tk.Label(master=frame2, textvariable=pName)
 label2.pack()
 
 
+pPrompt.set(ctl[current_ctl.get()].prompt)
+
 frame3 = tk.Frame(master=window, width=50, height=50, bg="blue")
 frame3.pack(fill=tk.BOTH)
 
@@ -349,6 +347,9 @@ label3.pack()
 
 frame4 = tk.Frame(master=window, width=75, height=50)
 frame4.pack(fill=tk.BOTH)
+
+# frame5 = tk.Frame(master=window, width=75, height=50)
+# frame5.pack(fill=tk.BOTH)
    
 i = 0
 # List (0-5) to hold each checkbox selection
