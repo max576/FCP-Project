@@ -182,13 +182,13 @@ def plot(fig, canvas, userchoice):
  	# plotting the graph
 
 
-    plot1.plot(x, y, label = "Your Guess")
-    plot1.plot(x, y2, label = "Unhinged")
+    plot1.plot(x, y, label = "With chosen parameters")
+    plot1.plot(x, y2, label = "Without any parameters implemented")
 
-    plot1.legend(['Your Guess','Unhinged']) 
+    plot1.legend(['With chosen parameters','Without any parameters implemented']) 
     plot1.set_xlabel('Period')
     plot1.set_ylabel('Death toll (people)')
-    plot1.set_title('Death Toll after parameter ')
+    plot1.set_title('Deaths Due to Covid-19')
 
 
     #plot1.plot(y)
@@ -305,7 +305,7 @@ display_welcome_screen()
 #Instantiate tkinter window
 window = tk.Tk() 
 #Instantiate tkinter int to identify current period 
-#and current perriod instructions
+#and current period instructions
 current_period = tk.IntVar()
 pName = tk.StringVar()
 
@@ -316,14 +316,14 @@ window.tk.call('wm', 'iconphoto', window._w, tk.PhotoImage(file='icon.png'))
 #width x height
 window.geometry('1200x1000')
 
-# create frame / label for  title banner 
+# create frame / label for title banner 
 frame1 = tk.Frame(master=window, width=50, height=200, bg="red")
 frame1.pack(fill=tk.BOTH)
 
 label1 = tk.Label(master=frame1, bg="red", fg="white", text = "Hello and welcome to our covid 19 simulator") 
 label1.pack()
 
-# create frame / label for Period instructions
+# create frame / label for period instructions
 frame2 = tk.Frame(master=window, width=50, height=50, bg="white")
 frame2.pack()
 
