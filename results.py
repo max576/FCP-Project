@@ -44,7 +44,7 @@ def display_results():
     label1.image = test
     label1.pack()
     
-    results_frame4 = tk.Frame(master=results_window, width=50, height=50,)
+    results_frame4 = tk.Frame(master=results_window, width=75, height=50,)
     results_frame4.pack()
     
     image2 = Image.open("plot2.png")

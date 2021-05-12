@@ -250,7 +250,7 @@ def calc_pie():
        # print("COSTS " + str(costs1))       
        # print ("finished uc " + str(uc))
        p += 1
-       
+    explode = (0.2, 0.2, 0.2, 0.2, 0.2, 0.2)
     # print("COSTS again" + str(costs1))
     fig = plt.figure()
     ax = fig.add_axes([0,0,1,1])
@@ -262,9 +262,7 @@ def calc_pie():
     plt.savefig("plot2.png")
     #plt.show()
     
-    
-    
-###############
+
 #
 #  M A I N
 #
@@ -346,7 +344,7 @@ while i != len(ctl):
  
 # the figure that will contain the plot
 #fig = plt.Figure(figsize=(5,4), dpi=100)
-fig = Figure(figsize = (7.5, 5), dpi = 105)
+fig = Figure(figsize = (7.5, 5), dpi = 100)
 canvas = FigureCanvasTkAgg(fig, master = window)
 
 #tk.Label(window, textvariable=current_period).pack()
