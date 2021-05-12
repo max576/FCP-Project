@@ -202,12 +202,13 @@ def plot(fig, canvas, userchoice):
     
 # <<<<<<< HEAD
     if currPeriod() == 5: fig.savefig('plot1.png')
-    if currPeriod() > 0:  plot1.remove()
+    if currPeriod() > 0: plot1.remove()
     if currPeriod() > 0: del plot1
-# =======
-    if currPeriod() == 0: plt.savefig('plot1.jpg')
-    if currPeriod() > 0:  plot1.remove()
-    if currPeriod() > 0: del plot1
+
+# # =======
+#     if currPeriod() == 0: plt.savefig('plot1.jpg')
+#     if currPeriod() > 0:  plot1.remove()
+#     if currPeriod() > 0: del plot1
 
 # >>>>>>> 1b4af583d51013d8a0e5480f6be472bb6aad44c5
     
