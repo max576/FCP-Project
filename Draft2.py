@@ -82,12 +82,12 @@ def initialize_periods(periods):
         
 #def drawUI(window,ctl,periods):
     
-def on_enter(event):
-    label4.configure(textvariable=pPrompt)
+#def on_enter(event):
+    #label4.configure(textvariable=pPrompt)
 
     # label4.configure(text="info here")
-def on_leave(event):
-    label4.configure(text="")    
+#def on_leave(event):
+    #label4.configure(text="")    
     
 
 # def move_on():
@@ -344,10 +344,10 @@ while i != len(ctl):
     chk = tk.Checkbutton(master=frame4, onvalue=ctl[i].bitvalue, offvalue=0, text=ctl[i].name, variable=cb_var[i])
     chk.pack(fill=tk.BOTH)
     i += 1
-    label4 = tk.Label(master=frame4, text="")
-    label4.pack()
-    chk.bind("<Enter>", on_enter)
-    chk.bind("<Leave>", on_leave)
+    #label4 = tk.Label(master=frame4, text="")
+    #label4.pack()
+    #chk.bind("<Enter>", on_enter)
+    #chk.bind("<Leave>", on_leave)
     #
 
  
