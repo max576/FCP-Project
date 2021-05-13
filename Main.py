@@ -234,11 +234,12 @@ def calc_pie():
         fig, ax = plt.subplots()
         # ax = fig.add_axes([0,0,1,1])
         # fig = Figure(figsize = (7.5, 5), dpi = 100)
-        controls = ['You did not spend anything']
+        controls = ['']
+        colour = ['white']
         Size = [100]
-        ax.pie(Size, labels = controls, autopct='%1.2f%%', shadow = True)
+        ax.pie(Size, labels = controls, colors=colour, autopct="")
         ax.axis('equal')
-        plt.title("Total Debt: £0") #bbox={'facecolor':'0.8', 'pad':5})
+        plt.title("Total Debt: £0\n\n You did not implement any control measures.\n\n  Please restart to get full use out of this simulator.", bbox={'facecolor':'0.8', 'pad':5})
         fig.tight_layout()
         plt.savefig("plot2.png")
         
