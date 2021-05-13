@@ -26,7 +26,7 @@ def display_results():
     results_frame2 = tk.Frame(master=results_window, width=50, height=50, bg="white")
     results_frame2.pack()
     
-    results_label2 = tk.Label(master=results_frame2, text="Results" + "\n\n blah blah blah blah blah blah blah blah\nblah blah blah blah blah blah blah blah\nblah blah blah blah blah blah blah blah\nblah blah blah blah blah blah blah blah\nblah blah blah blah blah blah blah blah\nblah blah blah blah blah blah blah blah\n")
+    results_label2 = tk.Label(master=results_frame2, text="Results" + "\n\n Congratulations! You have now completed the simulation.\n The cumulative death toll and some analysis of the total expenditure is shown below.\n")
     results_label2.pack()
     
 
@@ -51,7 +51,7 @@ def display_results():
     results_frame5 = tk.Frame(master=results_window, width=50, height=50, bg="white")
     results_frame5.pack()
     
-    results_label5 = tk.Label(master=results_frame5, text="cool beans")
+    results_label5 = tk.Label(master=results_frame5, text="Click the 'Quit' button to end the programme.")
     results_label5.pack()
     
     def replay():

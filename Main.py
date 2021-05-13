@@ -39,13 +39,11 @@ class epidemic_control:
 def initialize_controls(controls):
     
     ###IMPROVEMENT - provide csv initialize option for control list parameters
-    
     controls.append(epidemic_control(0,"Distancing & Facemasks","Although this is the most basic measure, it is one of the most effective\n at inhibiting the spread of disease. However, it may affect people's mental wellbeing as you're unable\n to hug your loved ones and it may affect the economy as shops and restaurants are unlikely to do as well\n if fewer people are allowed in them as they must be spread further apart.\n ",DISTANCING,[0.6,0.7,0.9,0.9,0.8,0.6], 3.9))
     controls.append(epidemic_control(1,"Early Closing","This will significantly affect the economy as there won't be as much revenue coming\n in to the pubs. Also, the average British person won't be too happy about this.\n\n\n" ,PUBS,[1.7,1.7,1.7,1.7,1.7,1.7], 1.9))
     controls.append(epidemic_control(2,"Close Non-essential Shops","Shops play a huge role in the country's economy - if they were to close,\n many people would lose their jobs and have to go on furlough, and the government would suffer, as\n would the mental wellbeing of the people who no longer have a day job, and some independent shops may have\n to close permanently due to the lack of income. However, indoor spaces are a breeding ground for\n viruses like Covid-19. ",NON_ESSENTIAL,[0.7,0.7,0.9,0.9,0.8,0.7], 16))
     controls.append(epidemic_control(3,"Close International Borders","Although closing the borders will make it much harder for Covid-19 and\n its new variants to spread to the UK, it will have a huge impact on the airline industry. It also\n stops family and friends who live abroad from seeing each other which will affect their wellbeing, as well\n as stop people from taking nice mental breaks to go on holiday.\n",BORDERS,[0.7,0.7,0.7,0.7,0.7,0.7], 64))
     controls.append(epidemic_control(4,"Total Lockdown","A full scale lockdown is the best measure to control the spread of the virus, but would\n have devastating effects both socially and econmically: children won't get their necessary\n social interactions and their learning will be affected, people won't get to see their family and friends,\n which is an integral part of human nature, and won't be able to go to work; many people would have\n to work from home or go on furlough, and the government, as well as business owners for example would struggle financially, just to name a few. ",LOCKDOWN,[0.4,0.4,0.7,0.8,0.6,0.3], 146))
-    
 
 class period:
     def __init__(self, controlid, r_rate, name, story):
@@ -59,14 +57,6 @@ class period:
 def initialize_periods(periods):
 
     ###IMPROVEMENT - provide csv import option for period content
-
-    # periods.append(period(0, 3.2,"Period 1 - January / February","The Health Secretary has informed you that the initial R-Rate is 3.2\n\n Of course, it is very cold throughout January and February and people are naturally coming down\n with the flu over winter. As a rule, spending is low across the UK in retail, but the public still desire\n eating out and drinking in cosy pubs. Although, it is proven that keeping pubs open has a direct\n correlation against the spread of virus. The health secretary advises against keeping cosy pubs open\n\n"))
-    # periods.append(period(1, 2.7,"Period 2 - March and April","Place holder for story for period 2"))
-    # periods.append(period(2, 2.1,"Period 3","Place holder for story for period 3 "))
-    # periods.append(period(3, 1.5,"Period 4","Place holder for story for period 4 "))
-    # periods.append(period(4, 2.0,"Period 5","Place holder for story for period 5 "))
-    # periods.append(period(5, 2.9,"Period 6","Place holder for story for period 6 "))
-    
 
     periods.append(period(0, 3.2,"Period 1 - January and February","The Health Secretary has informed you that the initial R-Rate is 3.2\n\n Of course, it is very cold throughout January and February and people are naturally coming down\n with the flu over winter. As a rule, spending is low across the UK in retail, but the public still desire\n eating out and drinking in cosy pubs. Although, it is proven that keeping pubs open has a direct\n correlation against the spread of virus. The health secretary advises against keeping cosy pubs open.\n\n"))
     periods.append(period(1, 2.7,"Period 2 - March and April","The Health Secretary has informed you that the new R-Rate is 2.7\n\nThere are tens of thousands of young people currently travelling around South East Asia in hope to\n ‘find themselves’, where there is another variant of a similar virus here in the UK spreading\n simultaneously. A national lockdown has been advised as the spread of the virus has gone\n worldwide, although this is due to have severe economic downfall, and also cause a mental health crisis.\n\n"))
@@ -189,17 +179,18 @@ def plot(fig, canvas, userchoice):
 
     # adding the subplot
     
-    plot1 = fig.add_subplot(111)
+    plot1 = fig.add_subplot(111, facecolor='#dddddd', axisbelow=True)
 
  	# plotting the graph
 
 
-    plot1.plot(x, y, label = "Your Guess")
-    plot1.plot(x, y2, label = "Unhinged")
+    plot1.plot(x, y,  'b', alpha=0.5, lw=2, label = "Your Guess")
+    plot1.plot(x, y2,  'g', alpha=0.5, lw=2, label = "Unhinged")
 
     plot1.legend(['Your Guess','Unhinged']) 
     plot1.set_xlabel('Period')
     plot1.set_ylabel('Death toll (people)')
+    plot1.grid(b=True, which='major', c='w', lw=2, ls='-')
     plot1.set_title('Death Toll after parameter ')
 
 
@@ -213,7 +204,7 @@ def plot(fig, canvas, userchoice):
     canvas.get_tk_widget().pack()
     
     if currPeriod() >= 0: fig.savefig('plot1.png')
-    if currPeriod() > 0:  plot1.remove()
+    if currPeriod() > 0: plot1.remove()
     if currPeriod() > 0: del plot1
 
     
@@ -238,18 +229,33 @@ def calc_pie():
        # print("COSTS " + str(costs1))       
        # print ("finished uc " + str(uc))
        p += 1
-    # explode = (0.2, 0.2, 0.2, 0.2, 0.2, 0.2)
-    fig, ax = plt.subplots()
-    # ax = fig.add_axes([0,0,1,1])
-    # fig = Figure(figsize = (7.5, 5), dpi = 100)
-    controls = ['Distancing & Facemasks', 'Early Closing', 'Close Non-essential Shops', 'Close International Borders', 'Total Lockdown']
-    #costs = [10000,2000,30000,40000,50000]
-    ax.pie(costs1, labels = controls,autopct='%1.2f%%')
-    ax.axis('equal')
-    plt.title("Total Debt: £" + str(sum(costs1)) + " Billion") #bbox={'facecolor':'0.8', 'pad':5})
-    fig.tight_layout()
-    plt.savefig("plot2.png")
-    #plt.show()
+    
+    if int(e) == 0:
+        fig, ax = plt.subplots()
+        # ax = fig.add_axes([0,0,1,1])
+        # fig = Figure(figsize = (7.5, 5), dpi = 100)
+        controls = ['You did not spend anything']
+        Size = [100]
+        ax.pie(Size, labels = controls, autopct='%1.2f%%', shadow = True)
+        ax.axis('equal')
+        plt.title("Total Debt: £0") #bbox={'facecolor':'0.8', 'pad':5})
+        fig.tight_layout()
+        plt.savefig("plot2.png")
+        
+        
+    if int(e) > 0:
+        fig, ax = plt.subplots()
+        # ax = fig.add_axes([0,0,1,1])
+        # fig = Figure(figsize = (7.5, 5), dpi = 100)
+        controls = ['Distancing & Facemasks', 'Early Closing', 'Close Non-essential Shops', 'Close International Borders', 'Total Lockdown']
+        explode = (0.2, 0.2, 0.2, 0.1, 0.2)
+        ax.pie(costs1, explode=explode, labels = controls, autopct='%1.2f%%', shadow = True, startangle=140)
+        ax.axis('equal')
+        plt.title("Total Debt: £" + str(sum(costs1)) + " Billion") #bbox={'facecolor':'0.8', 'pad':5})
+        fig.tight_layout()
+        plt.savefig("plot2.png")
+        #plt.show()
+    
     
     
 def show_results():
