@@ -7,12 +7,7 @@ Created on Wed May  5 13:59:55 2021
 
 #!/usr/bin/python
 import tkinter as tk
-import PIL
 from PIL import ImageTk, Image
-from matplotlib.figure import Figure
-# from Draft2 import plot, econ, pie
-from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg,
-NavigationToolbar2Tk)
 
 
 
@@ -21,7 +16,7 @@ def display_results():
     
     results_window.title("COVID Simulator")
     results_window.tk.call('wm', 'iconphoto', results_window._w, tk.PhotoImage(file='icon.png'))
-    results_window.geometry('1200x1000')
+    results_window.geometry('1200x1200')
     results_frame1 = tk.Frame(master=results_window, width=50, height=50, bg="red")
     results_frame1.pack(fill=tk.BOTH)
     
@@ -58,10 +53,18 @@ def display_results():
     
     results_label5 = tk.Label(master=results_frame5, text="cool beans")
     results_label5.pack()
+    
+    def replay():
+        from welcome import display_welcome_screen
+        results_window.destroy()
+        display_welcome_screen()
 
     
     tk.Button(results_window, text="Quit", command=results_window.destroy, fg="dark green", bg = "white").pack() 
     #display welcome_window, destroyed by button press above
+    
+    tk.Button(results_window, text="replay", command=replay, fg="dark green", bg = "white").pack() 
+
     results_window.mainloop() 
     
 
