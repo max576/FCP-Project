@@ -18,12 +18,12 @@ INVALID_ENTRY = 0
 MAGIC_NUMBER = 10000
 
 
-
 # Always keep imports active
 import tkinter as tk
 from matplotlib import pyplot as plt
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg)
+
 
 class epidemic_control:
     def __init__(self, controlid,name, prompt, bitvalue, weight, cost):
@@ -36,6 +36,7 @@ class epidemic_control:
         self.weight = weight
         self.cost = cost
 
+
 def initialize_controls(controls):
     
     ###IMPROVEMENT - provide csv initialize option for control list parameters
@@ -45,6 +46,7 @@ def initialize_controls(controls):
     controls.append(epidemic_control(3,"Close International Borders","Although closing the borders will make it much harder for Covid-19 and\n its new variants to spread to the UK, it will have a huge impact on the airline industry. It also\n stops family and friends who live abroad from seeing each other which will affect their wellbeing, as well\n as stop people from taking nice mental breaks to go on holiday.\n",BORDERS,[0.7,0.7,0.7,0.7,0.7,0.7], 64))
     controls.append(epidemic_control(4,"Total Lockdown","A full scale lockdown is the best measure to control the spread of the virus, but would\n have devastating effects both socially and econmically: children won't get their necessary\n social interactions and their learning will be affected, people won't get to see their family and friends,\n which is an integral part of human nature, and won't be able to go to work; many people would have\n to work from home or go on furlough, and the government, as well as business owners for example would struggle financially, just to name a few. ",LOCKDOWN,[0.4,0.4,0.7,0.8,0.6,0.3], 146))
 
+
 class period:
     def __init__(self, controlid, r_rate, name, story):
         # Basic simulation parameters:
@@ -53,6 +55,7 @@ class period:
         self.r_rate = r_rate
         self.name = name
         self.story = story
+
         
 def initialize_periods(periods):
 
@@ -70,25 +73,14 @@ def on_enter(event):
     num = str(event.widget)[-1]
     if num == "n": num = "1"
     num = int(num)-1
-    # print(num)
-    # print(dir(event.widget))
-    # print(event.widget.event_info())
+    print(event.widget)
     pPrompt.set(ctl[num].prompt)
-    # print(ctl[current_ctl.get()].prompt)
     label4.configure(textvariable=pPrompt)
-    # label4.configure(text="info here")
+
+
 def on_leave(event):
     label4.configure(text="")    
     
-# def on_enter(event):
-#     # label4.configure(textvariable=pPrompt)
-
-#     label4.configure(text="info here")
-# def on_leave(event):
-#     label4.configure(text="")    
-    
-
-# def move_on():
 
 def plot_and_move_next_period(fig, canvas, cb_var):
    #plot chart for this period
@@ -104,8 +96,7 @@ def plot_and_move_next_period(fig, canvas, cb_var):
 
     plot(fig, canvas, userchoice)
 
-    
-    
+        
     #final period? disable button otherwese set next period and  load  next period instructions
     if current_period.get() == len(periods)-1 : 
         # next_button["text"] = "Results"
@@ -120,6 +111,7 @@ def plot_and_move_next_period(fig, canvas, cb_var):
     
 def currPeriod(event=None):
     return current_period.get()
+
 
 def currControl(event=None):
     return current_ctl.get()
@@ -194,9 +186,6 @@ def plot(fig, canvas, userchoice):
     plot1.set_title('Death Toll after parameter ')
 
 
-
-    #plot1.plot(y)
-
 	# creating the Tkinter canvas
 	# containing the Matplotlib figure
 
@@ -207,7 +196,6 @@ def plot(fig, canvas, userchoice):
     if currPeriod() > 0: plot1.remove()
     if currPeriod() > 0: del plot1
 
-    
    
 
 # Economic cost of each parameter, this function will save the cost of each period, to then be totalled for the final results and called by the pie chart function
@@ -226,8 +214,6 @@ def calc_pie():
            print ("uc " + str(p))
            uc += 1  
        costs1.append(e)    
-       # print("COSTS " + str(costs1))       
-       # print ("finished uc " + str(uc))
        p += 1
     
     if int(e) == 0:
@@ -239,8 +225,7 @@ def calc_pie():
         ax.axis('equal')
         plt.title("Total Debt: £0\n\n You did not implement any control measures.\n\n  Please restart to get full use out of this simulator.", bbox={'facecolor':'0.8', 'pad':5})
         fig.tight_layout()
-        plt.savefig("PLOTS/pie.png")
-        
+        plt.savefig("PLOTS/pie.png")    
         
     if int(e) > 0:
         fig, ax = plt.subplots()
@@ -257,15 +242,18 @@ def calc_pie():
         plt.savefig("PLOTS/pie.png")
         #plt.show()
     
+    
 def Show_help():
     from SCRIPTS.help import Get_help
     Get_help()
+    
     
 def show_results():
     calc_pie()
     window.destroy()
     from SCRIPTS.results import display_results
     display_results()
+    
     
 def Replay():
     from SCRIPTS.welcome import display_welcome_screen
@@ -327,7 +315,6 @@ frame2.pack()
 pName.set(periods[current_period.get()].name + "\n\n" + periods[current_period.get()].story)    
 label2 = tk.Label(master=frame2, textvariable=pName)
 label2.pack()
-
 
 frame3 = tk.Frame(master=window, width=50, height=50, bg="blue")
 frame3.pack(fill=tk.BOTH)
