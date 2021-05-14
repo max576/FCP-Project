@@ -113,10 +113,6 @@ def currPeriod(event=None):
     return current_period.get()
 
 
-def currControl(event=None):
-    return current_ctl.get()
-
-
 def magic_number():
     return MAGIC_NUMBER
 
