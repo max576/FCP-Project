@@ -7,6 +7,7 @@ Created on Wed May  5 18:02:40 2021
 
 #!/usr/bin/python
 import tkinter as tk
+from PIL import ImageTk, Image
 
 def display_welcome_screen():
     
@@ -25,8 +26,17 @@ def display_welcome_screen():
     welcome_frame2 = tk.Frame(master=welcome_window, width=50, height=50, bg="white")
     welcome_frame2.pack()
     
-    welcome_label2 = tk.Label(master=welcome_frame2, text="Welcome" + "\n\n Happy New Year! Well, not quite so happy, but the year has begun nevertheless. As PM, you have\n been alerted of a new virus spreading across the UK with a naturally fluctuating R-Rate. Scientists\n will be simultaneously working on producing a vaccine for the public which will be ready at the end\n of the year, whilst reporting the new R-Rate to the Health secretary every two months, who\n will then report to you. Your task over the following year is to review the current R rate every two\n months and implement different restrictions/safety measures in attempt to reduce the R rate, and\n save lives! Although, it is important to consider the economic repercussions of each parameter in\n place, as each your budget is finite. Furthermore, an additional segment of social context will be\n given to you for each period in hope to influence your decisions further.\n\n\n Every period you will be asked to implement any / a combination of the following parameters:\n\n\n 2 metre social distancing for anyone outside of your living circle / support bubble.\n This works in conjunction with the obligation to wear facial coverings in any indoor public space, and outdoors when breaching social distancing.\n\n Closing all pubs and restaurants by 10pm.\n\n Closing all non-essential shops.\n Closing international borders for all visitors. Nobody comes in, nobody comes out. Overseas shipments for essential items i.e. food may still proceed.\n\n Full national lockdown.\n Everyone must stay at home and only leave the house for 1 hour of individual exercise,\n purchasing essential goods from a supermarket, and taking yourself or a direct family\n member to the hospital when seriously ill. Everyone who is able to work from home\n should continue to work, otherwise a furlough scheme will be in place (which will\n provide any individual with 80% of their standard wage / salary).")
+    welcome_label2 = tk.Label(master=welcome_frame2, text="Welcome" + "\n\n Happy New Year! Well, not quite so happy, but the year has begun nevertheless. As PM, you have\n been alerted of a new virus spreading across the UK with a naturally fluctuating R-Rate. Scientists\n will be simultaneously working on producing a vaccine for the public which will be ready at the end\n of the year, whilst reporting the new R-Rate to the Health secretary every two months, who\n will then report to you. Your task over the following year is to review the current R rate every two\n months and implement different restrictions/safety measures in attempt to reduce the R rate, and\n save lives! Although, it is important to consider the economic repercussions of each parameter in\n place, as each your budget is finite. Furthermore, an additional segment of social context will be\n given to you for each period in hope to influence your decisions further.\n\n\n Every period you will be asked to implement any / a combination of parameters.")
     welcome_label2.pack()
+    
+    welcome_frame3 = tk.Frame(master=welcome_window, width=50, height=50,)
+    welcome_frame3.pack()
+    
+    image1 = Image.open("virus.png")
+    test = ImageTk.PhotoImage(image1)
+    label1 = tk.Label(master = welcome_frame3, image = test)
+    label1.image = test
+    label1.pack()
     
     
     tk.Button(welcome_window, text="Start!", command=welcome_window.destroy, fg="dark green", bg = "white").pack()

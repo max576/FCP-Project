@@ -232,8 +232,6 @@ def calc_pie():
     
     if int(e) == 0:
         fig, ax = plt.subplots()
-        # ax = fig.add_axes([0,0,1,1])
-        # fig = Figure(figsize = (7.5, 5), dpi = 100)
         controls = ['']
         colour = ['white']
         Size = [100]
@@ -250,9 +248,11 @@ def calc_pie():
         # fig = Figure(figsize = (7.5, 5), dpi = 100)
         controls = ['Distancing & Facemasks', 'Early Closing', 'Close Non-essential Shops', 'Close International Borders', 'Total Lockdown']
         explode = (0.2, 0.2, 0.2, 0.1, 0.2)
-        ax.pie(costs1, explode=explode, labels = controls, autopct='%1.2f%%', shadow = True, startangle=140)
+        colors = ['yellowgreen','red','gold','lightskyblue','white','lightcoral','blue','pink', 'darkgreen','yellow','grey','violet','magenta','cyan']
+        ax.pie(costs1, explode=explode, labels = controls, shadow = True, startangle=140)
         ax.axis('equal')
         plt.title("Total Debt: £" + str(sum(costs1)) + " Billion") #bbox={'facecolor':'0.8', 'pad':5})
+        plt.legend(controls, costs1)
         fig.tight_layout()
         plt.savefig("plot2.png")
         #plt.show()
