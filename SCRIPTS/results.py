@@ -51,7 +51,7 @@ def display_results():
     results_frame5 = tk.Frame(master=results_window, width=50, height=50, bg="white")
     results_frame5.pack()
     
-    results_label5 = tk.Label(master=results_frame5, text="Click the 'Quit' button to end the program or replay to give it another go.")
+    results_label5 = tk.Label(master=results_frame5, text="Click the 'Quit' button to end the program or 'Replay' to give it another go.")
     results_label5.pack()
     
     def replay():
@@ -63,7 +63,7 @@ def display_results():
     tk.Button(results_window, text="Quit", command=results_window.destroy, fg="dark green", bg = "white").pack() 
     #display welcome_window, destroyed by button press above
     
-    tk.Button(results_window, text="replay", command=replay, fg="dark green", bg = "white").pack() 
+    tk.Button(results_window, text="Replay", command=replay, fg="dark green", bg = "white").pack() 
 
     results_window.mainloop() 
     

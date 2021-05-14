@@ -36,3 +36,11 @@
 #Sometimes Pyimage won't load icon.png
 #Graph in period 2 produces extra line
 #Replay Button only works once
+
+#################
+
+Hello Marker!
+
+We hope you like our project, we worked very hard on it!
+
+The report is in the folder 'report' as a word file.
