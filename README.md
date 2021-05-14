@@ -34,9 +34,10 @@
 
 # Known Isues: (To be fixed in COVID SIMULATOR 2.0)
 #Sometimes Pyimage won't load icon.png
+#can't use "pyimage52" as iconphoto: not a photo image
 #Red cross on welcome window takes you to the main window 
 #Graph in period 2 produces extra line
-#Pie chart overlaps and has A^ in title 
+
 #Replay Button only works once
 
 #################

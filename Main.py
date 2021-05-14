@@ -250,19 +250,19 @@ def calc_pie():
     
     
 def Show_help():
-    from SCRIPTS.help import Get_help
+    from _help import Get_help
     Get_help()
     
     
 def show_results():
     calc_pie()
     window.destroy()
-    from SCRIPTS.results import display_results
+    from results import display_results
     display_results()
     
     
 def Replay():
-    from SCRIPTS.welcome import display_welcome_screen
+    from welcome import display_welcome_screen
     display_welcome_screen()
     
     
@@ -285,7 +285,7 @@ initialize_periods(periods)
 userchoice = []
 
 #call welcome screen function, destroy window on button press
-from SCRIPTS.welcome import display_welcome_screen
+from welcome import display_welcome_screen
 display_welcome_screen()
 
 
