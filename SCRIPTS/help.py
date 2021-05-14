@@ -7,6 +7,7 @@ Created on Fri May 14 02:10:08 2021
 
 #!/usr/bin/python
 import tkinter as tk
+from PIL import ImageTk,Image
 
 def Get_help():
     
@@ -14,8 +15,10 @@ def Get_help():
     help_window = tk.Tk() 
     
     help_window.title("COVID Simulator")
-    # help_window.tk.call('wm', 'iconphoto', help_window._w, tk.PhotoImage(file='GRAPHICS/icon.png'))
+    # help_window.tk.call('wm', 'iconphoto', help_window._w, tk.PhotoImage(file='GRAPHICS/help_icon.png'))
     help_window.geometry('800x550')
+    # help_window.configure(bg='white')
+    
     help_frame1 = tk.Frame(master=help_window, width=50, height=50, bg="red")
     help_frame1.pack(fill=tk.BOTH)
     

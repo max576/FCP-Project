@@ -229,8 +229,7 @@ def calc_pie():
         
     if int(e) > 0:
         fig, ax = plt.subplots()
-        # ax = fig.add_axes([0,0,1,1])
-        # fig = Figure(figsize = (7.5, 5), dpi = 100)
+        fig = plt.Figure(figsize=(7.5,5), dpi=100)
         controls = ['Distancing & Facemasks', 'Early Closing', 'Close Non-essential Shops', 'Close International Borders', 'Total Lockdown']
         explode = (0.2, 0.2, 0.2, 0.1, 0.2)
         colors = ['yellowgreen','red','gold','lightskyblue','white','lightcoral','blue','pink', 'darkgreen','yellow','grey','violet','magenta','cyan']
@@ -299,6 +298,7 @@ window.title("COVID Simulator")
 window.tk.call('wm', 'iconphoto', window._w, tk.PhotoImage(file='GRAPHICS/icon.png'))
 #width x height
 window.geometry('1200x1200')
+# window.configure(bg='white')
 
 # create frame / label for  title banner 
 frame1 = tk.Frame(master=window, width=50, height=200, bg="red")
@@ -343,7 +343,7 @@ while i != len(ctl):
     label4.pack()
     chk.bind("<Enter>", on_enter)
     chk.bind("<Leave>", on_leave)
-    #
+
 
  
 # the figure that will contain the plot

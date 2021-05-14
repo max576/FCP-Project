@@ -17,6 +17,11 @@ def display_welcome_screen():
     welcome_window.title("COVID Simulator")
     welcome_window.tk.call('wm', 'iconphoto', welcome_window._w, tk.PhotoImage(file='GRAPHICS/icon.png'))
     welcome_window.geometry('1200x1200')
+    # background_image=tk.PhotoImage('GRAPHICS/background.png')
+    # welcome_window.configure(bg="white")
+    # background_label = tk.Label(master=welcome_window, image=background_image)
+    # background_label.pack()
+    
     welcome_frame1 = tk.Frame(master=welcome_window, width=50, height=50, bg="red")
     welcome_frame1.pack(fill=tk.BOTH)
     
@@ -32,7 +37,7 @@ def display_welcome_screen():
     welcome_frame3 = tk.Frame(master=welcome_window, width=90, height=60,)
     welcome_frame3.pack()
     
-    image1 = Image.open("GRAPHICS/virus.png")
+    image1 = Image.open("GRAPHICS/Boris.png")
     virus = ImageTk.PhotoImage(image1)
     label1 = tk.Label(master = welcome_frame3, image = virus)
     label1.image = virus

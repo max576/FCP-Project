@@ -17,6 +17,8 @@ def display_results():
     results_window.title("COVID Simulator")
     results_window.tk.call('wm', 'iconphoto', results_window._w, tk.PhotoImage(file='GRAPHICS/icon.png'))
     results_window.geometry('1200x1200')
+    # results_window.configure(background='white')
+    
     results_frame1 = tk.Frame(master=results_window, width=50, height=50, bg="red")
     results_frame1.pack(fill=tk.BOTH)
     
@@ -30,7 +32,7 @@ def display_results():
     results_label2.pack()
     
 
-    results_frame3 = tk.Frame(master=results_window, width=50, height=50,)
+    results_frame3 = tk.Frame(master=results_window, width=50, height=50)
     results_frame3.pack()
     
     image1 = Image.open("PLOTS/death.png")
@@ -39,7 +41,7 @@ def display_results():
     label1.image = test
     label1.pack()
     
-    results_frame4 = tk.Frame(master=results_window, width=75, height=50,)
+    results_frame4 = tk.Frame(master=results_window, width=75, height=50)
     results_frame4.pack()
     
     image2 = Image.open("PLOTS/pie.png")
