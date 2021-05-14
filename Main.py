@@ -344,7 +344,6 @@ while i != len(ctl):
     chk.bind("<Enter>", on_enter)
     chk.bind("<Leave>", on_leave)
 
-
  
 # the figure that will contain the plot
 

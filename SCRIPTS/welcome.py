@@ -37,7 +37,7 @@ def display_welcome_screen():
     welcome_frame3 = tk.Frame(master=welcome_window, width=90, height=60,)
     welcome_frame3.pack()
     
-    image1 = Image.open("GRAPHICS/Boris.png")
+    image1 = Image.open("GRAPHICS/Virus.png")
     virus = ImageTk.PhotoImage(image1)
     label1 = tk.Label(master = welcome_frame3, image = virus)
     label1.image = virus
