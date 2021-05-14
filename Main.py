@@ -174,16 +174,27 @@ def plot(fig, canvas, userchoice):
     plot1 = fig.add_subplot(111, facecolor='#dddddd', axisbelow=True)
 
  	# plotting the graph
+     
+    plot1.plot(x, y,  'b', alpha=0.5, lw=2, label = "With chosen parameters")
+    plot1.plot(x, y2,  'g', alpha=0.5, lw=2, label = "Without any parameters")
 
+ 
 
-    plot1.plot(x, y,  'b', alpha=0.5, lw=2, label = "Your Guess")
-    plot1.plot(x, y2,  'g', alpha=0.5, lw=2, label = "Unhinged")
-
-    plot1.legend(['Your Guess','Unhinged']) 
-    plot1.set_xlabel('Period')
+    plot1.legend(['With chosen parameters','Without any parameters']) 
+    plot1.set_xlabel('Period (2 months)')
     plot1.set_ylabel('Death toll (people)')
     plot1.grid(b=True, which='major', c='w', lw=2, ls='-')
     plot1.set_title('Death Toll after parameter ')
+
+
+    # plot1.plot(x, y,  'b', alpha=0.5, lw=2, label = "Your Guess")
+    # plot1.plot(x, y2,  'g', alpha=0.5, lw=2, label = "Unhinged")
+
+    # plot1.legend(['Your Guess','Unhinged']) 
+    # plot1.set_xlabel('Period')
+    # plot1.set_ylabel('Death toll (people)')
+    # plot1.grid(b=True, which='major', c='w', lw=2, ls='-')
+    # plot1.set_title('Death Toll after parameter ')
 
 
 	# creating the Tkinter canvas
@@ -343,6 +354,7 @@ while i != len(ctl):
     label4.pack()
     chk.bind("<Enter>", on_enter)
     chk.bind("<Leave>", on_leave)
+
 
  
 # the figure that will contain the plot

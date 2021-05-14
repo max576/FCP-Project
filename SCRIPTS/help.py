@@ -15,7 +15,6 @@ def Get_help():
     help_window = tk.Tk() 
     
     help_window.title("COVID Simulator")
-    # help_window.tk.call('wm', 'iconphoto', help_window._w, tk.PhotoImage(file='GRAPHICS/help_icon.png'))
     help_window.geometry('800x550')
     # help_window.configure(bg='white')
     
