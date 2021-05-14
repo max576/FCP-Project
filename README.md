@@ -12,7 +12,7 @@
 
 #GRAPHICS contains the images icon.png, virus.png and others to improve the look of the GUI.
 
-#PLOTS should be empty and will contain the plots, death.png and debt.png once the program is run for the first time, (These will be automatically updated after every execution of the program.)
+#PLOTS should contain the plot templates and will contain the plots, death.png and debt.png once the program is run for the first time, (These will be automatically updated after every execution of the program.)
 
 # The only script you will need to open and run is Main.py
 
@@ -33,12 +33,10 @@
 #################
 
 # Known Isues: (To be fixed in COVID SIMULATOR 2.0)
-#Periods won't change
-#Sometimes Pyimage won't load icon.png
-#can't use "pyimage52" as iconphoto: not a photo image
-#Red cross on welcome window takes you to the main window 
-#Graph in period 2 produces extra line
-
+#Periods can run into an issue where the description won't change - if this happens to you make sure you have the plot templates in the PLOT file and the __pychache__ folder in the SCRIPTS file.
+#Sometimes Pyimage won't load icon.png - error code: can't use "pyimage52" as iconphoto: not a photo image - if this happens restart you IDLE.
+#Red cross on welcome window takes you to the main window - have to use red cross or quit button on the main window.
+#Graph in period 2 produces extra line 
 #Replay Button only works once
 
 #################
