@@ -15,7 +15,7 @@ def display_welcome_screen():
     welcome_window = tk.Tk() 
     
     welcome_window.title("COVID Simulator")
-    welcome_window.tk.call('wm', 'iconphoto', welcome_window._w, tk.PhotoImage(file='icon.png'))
+    welcome_window.tk.call('wm', 'iconphoto', welcome_window._w, tk.PhotoImage(file='GRAPHICS/icon.png'))
     welcome_window.geometry('1200x1200')
     welcome_frame1 = tk.Frame(master=welcome_window, width=50, height=50, bg="red")
     welcome_frame1.pack(fill=tk.BOTH)
@@ -29,13 +29,13 @@ def display_welcome_screen():
     welcome_label2 = tk.Label(master=welcome_frame2, text="Welcome" + "\n\n Happy New Year! Well, not quite so happy, but the year has begun nevertheless. As PM, you have\n been alerted of a new virus spreading across the UK with a naturally fluctuating R-Rate. Scientists\n will be simultaneously working on producing a vaccine for the public which will be ready at the end\n of the year, whilst reporting the new R-Rate to the Health secretary every two months, who\n will then report to you. Your task over the following year is to review the current R rate every two\n months and implement different restrictions/safety measures in attempt to reduce the R rate, and\n save lives! Although, it is important to consider the economic repercussions of each parameter in\n place, as each your budget is finite. Furthermore, an additional segment of social context will be\n given to you for each period in hope to influence your decisions further.\n\n\n Every period you will be asked to implement any / a combination of parameters.")
     welcome_label2.pack()
     
-    welcome_frame3 = tk.Frame(master=welcome_window, width=50, height=50,)
+    welcome_frame3 = tk.Frame(master=welcome_window, width=90, height=60,)
     welcome_frame3.pack()
     
-    image1 = Image.open("virus.png")
-    test = ImageTk.PhotoImage(image1)
-    label1 = tk.Label(master = welcome_frame3, image = test)
-    label1.image = test
+    image1 = Image.open("GRAPHICS/virus.png")
+    virus = ImageTk.PhotoImage(image1)
+    label1 = tk.Label(master = welcome_frame3, image = virus)
+    label1.image = virus
     label1.pack()
     
     

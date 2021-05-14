@@ -203,7 +203,7 @@ def plot(fig, canvas, userchoice):
     canvas.draw()
     canvas.get_tk_widget().pack()
     
-    if currPeriod() >= 0: fig.savefig('plot1.png')
+    if currPeriod() >= 0: fig.savefig('PLOTS/death.png')
     if currPeriod() > 0: plot1.remove()
     if currPeriod() > 0: del plot1
 
@@ -239,7 +239,7 @@ def calc_pie():
         ax.axis('equal')
         plt.title("Total Debt: £0\n\n You did not implement any control measures.\n\n  Please restart to get full use out of this simulator.", bbox={'facecolor':'0.8', 'pad':5})
         fig.tight_layout()
-        plt.savefig("plot2.png")
+        plt.savefig("PLOTS/pie.png")
         
         
     if int(e) > 0:
@@ -254,18 +254,22 @@ def calc_pie():
         plt.title("Total Debt: £" + str(sum(costs1)) + " Billion") #bbox={'facecolor':'0.8', 'pad':5})
         plt.legend(controls, costs1)
         fig.tight_layout()
-        plt.savefig("plot2.png")
+        plt.savefig("PLOTS/pie.png")
         #plt.show()
     
-    
+def Show_help():
+    from SCRIPTS.help import Get_help
+    Get_help()
     
 def show_results():
     calc_pie()
     window.destroy()
-    from results import display_results
+    from SCRIPTS.results import display_results
     display_results()
     
-
+def Replay():
+    from SCRIPTS.welcome import display_welcome_screen
+    display_welcome_screen()
     
     
     
@@ -287,7 +291,7 @@ initialize_periods(periods)
 userchoice = []
 
 #call welcome screen function, destroy window on button press
-from welcome import display_welcome_screen
+from SCRIPTS.welcome import display_welcome_screen
 display_welcome_screen()
 
 
@@ -304,7 +308,7 @@ pPrompt = tk.StringVar()
 ####Tkinter window and widget definitions
 
 window.title("COVID Simulator")
-window.tk.call('wm', 'iconphoto', window._w, tk.PhotoImage(file='icon.png'))
+window.tk.call('wm', 'iconphoto', window._w, tk.PhotoImage(file='GRAPHICS/icon.png'))
 #width x height
 window.geometry('1200x1200')
 
@@ -356,26 +360,21 @@ while i != len(ctl):
 
  
 # the figure that will contain the plot
-#fig = plt.Figure(figsize=(5,4), dpi=100)
+
 fig = Figure(figsize = (7.5, 5), dpi = 105)
 canvas = FigureCanvasTkAgg(fig, master = window)
 
 #tk.Label(window, textvariable=current_period).pack()
 next_button = tk.Button(window, text="Next Period", command=lambda: plot_and_move_next_period(fig, canvas,cb_var,), fg="dark green", bg = "white")
 next_button.pack()
+tk.Button(window, text="Help!", command=Show_help, fg="dark green", bg = "white").pack() 
 tk.Button(window, text="Quit", command=window.destroy, fg="dark green", bg = "white").pack() 
 
- 
-##for x in userchoice:
-##     print("\nuser choice: " +str(x))
+
 
 window.mainloop() #used to make the program work
 
-# print ("econ value [" + str(econ()) + "]")
 
 
-
-# from results import display_results
-# display_results()
 
 
