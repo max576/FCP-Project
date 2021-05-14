@@ -33,6 +33,7 @@
 #################
 
 # Known Isues: (To be fixed in COVID SIMULATOR 2.0)
+#Periods won't change
 #Sometimes Pyimage won't load icon.png
 #can't use "pyimage52" as iconphoto: not a photo image
 #Red cross on welcome window takes you to the main window 
